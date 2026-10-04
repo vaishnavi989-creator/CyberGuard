@@ -1,0 +1,7 @@
+url,label
+https://google.com,legitimate
+https://youtube.com,legitimate
+https://github.com,legitimate
+http://secure-login-123456.com,phishing
+http://verify-account-987654.com,phishing
+http://bank-login-123456789.com,phishing

@@ -1,0 +1,25 @@
+# Python cache
+__pycache__/
+*.pyc
+
+# Database
+cyberguard.db
+
+# Dataset files
+dataset/*.csv
+dataset/*.zip
+dataset/phiusil_dataset/
+
+# Virtual environments
+venv/
+.venv/
+
+# Environment variables
+.env
+
+# IDE files
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db

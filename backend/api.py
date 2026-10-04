@@ -8,6 +8,32 @@ from backend.risk_engine import calculate_risk
 app = FastAPI()
 
 
+# Database table create karna
+def create_database():
+
+    connection = sqlite3.connect("cyberguard.db")
+    cursor = connection.cursor()
+
+    cursor.execute("""
+    CREATE TABLE IF NOT EXISTS scans (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        url TEXT NOT NULL,
+        risk_score INTEGER,
+        result TEXT,
+        risk_level TEXT,
+        reasons TEXT,
+        scan_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    )
+    """)
+
+    connection.commit()
+    connection.close()
+
+
+# App start hote hi database create hoga
+create_database()
+
+
 @app.get("/")
 def home():
     return {"message": "CyberGuard API is running!"}
@@ -46,8 +72,6 @@ def scan_url(url: str):
         "reasons": reasons
     }
 
-
-# 👇 ISKE BILKUL NEECHHE PASTE KARO
 
 @app.get("/history")
 def scan_history():

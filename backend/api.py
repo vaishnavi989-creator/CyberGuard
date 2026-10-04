@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 import sqlite3
 
 from backend.url_analyzer import analyze_url
@@ -6,6 +7,17 @@ from backend.risk_engine import calculate_risk
 
 
 app = FastAPI()
+
+
+# CORS
+# Public frontend ko backend access karne ki permission
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 # Database table create karna
